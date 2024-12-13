@@ -1,0 +1,14 @@
+Protocolo REST
+REST (Representational State Transfer) é um estilo de arquitetura para comunicação entre sistemas na web. Ele utiliza métodos HTTP padrão (como GET, POST, PUT, DELETE) para realizar operações sobre recursos identificados por URLs. Algumas características principais do REST incluem12:
+
+Stateless: Cada requisição do cliente para o servidor deve conter todas as informações necessárias para entender e processar o pedido. O servidor não armazena o estado do cliente entre as requisições.
+Cacheable: As respostas devem ser explicitamente rotuladas como cacheáveis ou não, para melhorar a eficiência.
+Uniform Interface: Define uma interface uniforme entre os componentes, simplificando e desacoplando a arquitetura.
+CRUD
+CRUD é um acrônimo para Create, Read, Update e Delete, que representam as quatro operações básicas de armazenamento persistente34:
+
+Create (Criar): Adicionar novos dados ao sistema. Em REST, isso geralmente é feito com o método POST.
+Read (Ler): Recuperar dados existentes. Em REST, isso é feito com o método GET.
+Update (Atualizar): Modificar dados existentes. Em REST, isso pode ser feito com os métodos PUT (substituir) ou PATCH (modificar).
+Delete (Excluir): Remover dados existentes. Em REST, isso é feito com o método DELETE.
+Esses conceitos são fundamentais para o desenvolvimento de APIs e sistemas de gerenciamento de dados
