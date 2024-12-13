@@ -1,0 +1,15 @@
+Diferença entre Biblioteca e Framework
+Biblioteca e framework são termos frequentemente usados no desenvolvimento de software, mas possuem diferenças importantes:
+
+Biblioteca
+Definição: Uma biblioteca é uma coleção de funções e rotinas reutilizáveis que você pode chamar em seu código. Ela oferece ferramentas específicas para resolver problemas comuns.
+Controle: Você está no controle do fluxo da aplicação. Você decide quando e onde chamar as funções da biblioteca.
+Exemplo: O jQuery é uma biblioteca JavaScript que facilita a manipulação do DOM e a realização de operações AJAX1.
+Framework
+Definição: Um framework é uma estrutura de suporte que fornece uma base sobre a qual você pode construir seu software. Ele define o esqueleto da aplicação e como os componentes devem interagir.
+Controle: O framework está no controle do fluxo da aplicação. Ele chama o seu código em momentos específicos, um conceito conhecido como "inversão de controle".
+Exemplo: O Angular é um framework JavaScript que fornece uma estrutura completa para desenvolver aplicações web, incluindo a gestão de componentes, roteamento e integração com APIs2.
+Resumo
+Biblioteca: Você chama a biblioteca.
+Framework: O framework chama você.
+Se precisar de mais detalhes ou exemplos 

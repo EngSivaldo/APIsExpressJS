@@ -1,0 +1,10 @@
+CPU (Unidade Central de Processamento)
+A CPU, ou processador, é o "cérebro" do computador. Ela executa instruções de programas, realiza cálculos e gerencia a comunicação entre os diferentes componentes do sistema. A velocidade e eficiência da CPU são cruciais para o desempenho geral do computador.
+
+Memória RAM (Memória de Acesso Aleatório)
+A memória RAM é um tipo de memória volátil que armazena temporariamente os dados e instruções que a CPU precisa acessar rapidamente. Quando você abre um programa, ele é carregado da unidade de armazenamento (como um SSD ou HDD) para a RAM, permitindo um acesso mais rápido. A quantidade de RAM disponível pode afetar a capacidade do sistema de executar múltiplas tarefas simultaneamente1.
+
+Memória Cache
+A memória cache é uma memória ainda mais rápida que a RAM, localizada dentro ou muito próxima da CPU. Ela armazena dados frequentemente acessados pela CPU para acelerar o processamento. Existem diferentes níveis de cache (L1, L2, L3), cada um com diferentes tamanhos e velocidades. A cache ajuda a reduzir o tempo que a CPU leva para acessar dados da RAM2.
+
+Esses três componentes trabalham juntos para garantir que seu computador funcione de maneira eficiente e rápida
