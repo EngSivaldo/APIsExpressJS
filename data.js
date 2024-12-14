@@ -1,6 +1,6 @@
 //simula banco de dados
 
-export const drivers = [
+const driversInRandonOrder = [
   {
     name: 'Max Verstappen',
     team: 'Red Bull Racing',
@@ -129,4 +129,13 @@ export const drivers = [
   },
 ];
 
-
+//ordena a lista de pilotos
+export const drivers = driversInRandonOrder.sort((b,a) => {
+  if(a.points > b.points) {
+    return 1;
+  }
+  if(b.points > a.points) {
+    return -1;
+  }
+  return 0;
+})

@@ -14,6 +14,13 @@ app.get(baseAPIRoute + '/drivers', (req, resp) => {
   resp.status(200).send(drivers);//entregar a lista
 })
 
+//estabelecer nova rota
+app.get(baseAPIRoute + '/drivers/standings/:position', (req, resp) => {
+  const position = req.params.position;
+  const selectDrivers = drivers[position-1]
+  resp.status(200).send(selectDrivers);//entregar a lista
+});
+
 //variavel guarda a porta
 const port = 3000;
 
