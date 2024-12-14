@@ -1,3 +1,5 @@
+//simula banco de dados
+
 export const drivers = [
   {
     name: 'Max Verstappen',
@@ -126,3 +128,5 @@ export const drivers = [
     id: 'd15a9c50-5943-4be6-872f-b850914c9a80',
   },
 ];
+
+
