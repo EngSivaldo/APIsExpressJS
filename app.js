@@ -46,7 +46,22 @@ app.post(baseAPIRoute + '/drivers', (req, res) => {
     return 0;
   });
   res.status(200).send(newDriver);
-})
+});
+
+//metodo put /atualizar lista
+app.put(baseAPIRoute + '/drivers/:id', (req, res) => {
+  const { id } = req.params;
+  const selectDrivers = drivers.find((d) => d.id === id);
+
+  for (const key in selectDrivers) {
+    if(req.body[key]) {
+      selectDrivers[key] = req.body[key];
+    }
+  }
+  res.status(200).send(selectDrivers);
+
+
+});
 
 //variavel guarda a porta
 const port = 3000;
