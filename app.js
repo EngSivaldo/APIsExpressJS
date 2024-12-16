@@ -48,7 +48,7 @@ app.post(baseAPIRoute + '/drivers', (req, res) => {
   res.status(200).send(newDriver);
 });
 
-//metodo put /atualizar lista
+//metodo put /atualizar lista com piloto especifico
 app.put(baseAPIRoute + '/drivers/:id', (req, res) => {
   const { id } = req.params;
   const selectDrivers = drivers.find((d) => d.id === id);
@@ -59,9 +59,18 @@ app.put(baseAPIRoute + '/drivers/:id', (req, res) => {
     }
   }
   res.status(200).send(selectDrivers);
-
-
 });
+
+//end point delete
+app.delete(baseAPIRoute + '/drivers/:id', (req, res) => {
+  const { id } = req.params;
+  const selectDrivers = drivers.find((d) => d.id === id);
+
+  const index = drivers.indexOf(selectDrivers);
+
+  drivers.splice(index,1);
+  res.status(200).send(selectDrivers)
+})
 
 //variavel guarda a porta
 const port = 3000;
