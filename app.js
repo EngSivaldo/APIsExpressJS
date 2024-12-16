@@ -29,6 +29,11 @@ app.get(baseAPIRoute + '/drivers/standings/:position', (req, resp) => {
 app.get(baseAPIRoute + '/drivers/:id', (req, res) => {
   const {id} = req.params;
   const selectDrivers = drivers.find(driver => driver.id === id);
+  if (!selectDrivers) {
+    // Se o piloto com o ID fornecido não for encontrado, retorna um erro 404 com uma mensagem apropriada
+    res.status(404).send('Este piloto não existe!');
+    return;
+  }
   res.status(200).send(selectDrivers)
 
 });
@@ -52,6 +57,11 @@ app.post(baseAPIRoute + '/drivers', (req, res) => {
 app.put(baseAPIRoute + '/drivers/:id', (req, res) => {
   const { id } = req.params;
   const selectDrivers = drivers.find((d) => d.id === id);
+  if (!selectDrivers) {
+    // Se o piloto com o ID fornecido não for encontrado, retorna um erro 404 com uma mensagem apropriada
+    res.status(404).send('Este piloto não existe!');
+    return;
+  }
 
   for (const key in selectDrivers) {
     if(req.body[key]) {
@@ -65,6 +75,11 @@ app.put(baseAPIRoute + '/drivers/:id', (req, res) => {
 app.delete(baseAPIRoute + '/drivers/:id', (req, res) => {
   const { id } = req.params;
   const selectDrivers = drivers.find((d) => d.id === id);
+  if (!selectDrivers) {
+    // Se o piloto com o ID fornecido não for encontrado, retorna um erro 404 com uma mensagem apropriada
+    res.status(404).send('Este piloto não existe!');
+    return;
+  }
 
   const index = drivers.indexOf(selectDrivers);
 
