@@ -6,6 +6,7 @@ import Joi from 'joi';
 import { drivers } from './data.js';
 import { randomUUID } from 'node:crypto';
 import { send } from 'node:process';
+import { join } from 'node:path';
 
 
 //mostra todos o endpoints
@@ -17,15 +18,22 @@ const app = express();
 app.use(express.json());
 
 //endpoint lista de todos os pilotos
-app.get(baseAPIRoute + '/drivers', (req, resp) => {
-  resp.status(200).send(drivers);//entregar a lista
+app.get(baseAPIRoute + '/drivers', (req, res) => {
+  res.status(200).send(drivers);//entregar a lista
 })
 
 //rota que recupera infor piloto especifico pela posicao
-app.get(baseAPIRoute + '/drivers/standings/:position', (req, resp) => {
+app.get(baseAPIRoute + '/drivers/standings/:position', (req, res) => {
+  const positionSchema = Joi.number().min(1).max(drivers.length);
   const {position} = req.params;
-  const selectDrivers = drivers[position-1]
-  resp.status(200).send(selectDrivers);//entregar a lista
+  const { error } = positionSchema.validate(position);
+
+  if(error) {
+    res.status(400).send(error);
+    return;
+  }
+  const selectDrivers = drivers[position -1];
+  res.status(200).send(selectDrivers);//entregar a lista
 });
 
 //rota do (id)
@@ -33,7 +41,7 @@ app.get(baseAPIRoute + '/drivers/:id', (req, res) => {
   const {id} = req.params;
   const selectDrivers = drivers.find(driver => driver.id === id);
   if (!selectDrivers) {
-    // Se o piloto com o ID fornecido não for encontrado, retorna um erro 404 com uma mensagem apropriada
+    // Se o piloto com ID fornecido não for encontrado, erro 404 mensagem apropriada
     res.status(404).send('Este piloto não existe!');
     return;
   }
@@ -71,6 +79,19 @@ app.post(baseAPIRoute + '/drivers', (req, res) => {
 
 //metodo put /atualizar lista com piloto especifico
 app.put(baseAPIRoute + '/drivers/:id', (req, res) => {
+  const updateDriveSchema = Joi.object({
+    name: Joi.string().min(3).max(50),
+    team: Joi.string().min(3).max(50),
+    points: Joi.number().min(0).max(1000),
+  }).min(1);
+
+  const error = updateDriveSchema.validate(req.body, {abortEarly: false})
+  if(error) {
+    res.status(400).send(error);
+    return;
+
+  }
+
   const { id } = req.params;
   const selectDrivers = drivers.find((d) => d.id === id);
   if (!selectDrivers) {
