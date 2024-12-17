@@ -3,7 +3,7 @@
 //instala o express js(npm install express)
 import express, { response } from 'express';
 import Joi from 'joi';
-import { drivers } from './data.js';
+import { drivers, teams } from './data.js';
 import { randomUUID } from 'node:crypto';
 import { send } from 'node:process';
 import { join } from 'node:path';
@@ -16,6 +16,12 @@ const app = express();
 
 // Uma função de middleware embutida no Express.js. Ela analisa as solicitações recebidas com cargas úteis em JSON e é baseada na biblioteca body-parser.
 app.use(express.json());
+
+//endpoint lista de construtores
+app.get(baseAPIRoute + '/teams', (req, res) => {
+  res.status(200).send(teams);//entregar a lista
+})
+
 
 //endpoint lista de todos os pilotos
 app.get(baseAPIRoute + '/drivers', (req, res) => {
