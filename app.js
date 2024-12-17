@@ -20,7 +20,22 @@ app.use(express.json());
 //endpoint lista de construtores
 app.get(baseAPIRoute + '/teams', (req, res) => {
   res.status(200).send(teams);//entregar a lista
-})
+});
+
+//Obtendo informações de uma equipe (GET: /teams/standings/:position)
+app.get(baseAPIRoute + '/teams/standings/:position', (req, res) => {
+  const positionSchema = Joi.number().min(1).max(teams.length);
+  const {position} = req.params;
+  const { error } = positionSchema.validate(position);
+
+  if(error) {
+    res.status(400).send(error);
+    return;
+  }
+  const selectTeam = teams[position -1];
+  res.status(200).send(selectTeam);//entregar a lista
+});
+
 
 
 //endpoint lista de todos os pilotos
