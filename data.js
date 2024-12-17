@@ -1,6 +1,4 @@
-//simula banco de dados
-
-const driversInRandonOrder = [
+const driversInRandomOrder = [
   {
     name: 'Max Verstappen',
     team: 'Red Bull Racing',
@@ -122,39 +120,40 @@ const driversInRandonOrder = [
     id: '54e3d25b-e421-4d29-a96d-22effbed9f8e',
   },
   {
-    name: 'Nick de Vries',
+    name: 'Nyck de Vries',
     team: 'AlphaTauri',
     points: 0,
     id: 'd15a9c50-5943-4be6-872f-b850914c9a80',
   },
 ];
 
-//ordena a lista de pilotos
-export const drivers = driversInRandonOrder.sort((b,a) => {
-  if(a.points > b.points) {
+export const drivers = driversInRandomOrder.sort((b, a) => {
+  if (a.points > b.points) {
     return 1;
   }
-  if(b.points > a.points) {
+  if (b.points > a.points) {
     return -1;
   }
   return 0;
 });
 
-
-export const teams = driversInRandonOrder.reduce((acc, currentValue) => {
-  const { team, points} = currentValue;
-  const teamObject = acc.find((t) => t.team === team);
-  teamObject ? (teamObject.points += points) : acc.push({team, points});
-  return acc;
-},[].sort((b,a) => {
-  if(a.points > b.points) {
-    return 1;
-  }
-  if(b.points > a.points) {
-    return -1;
-  }
-  return 0;
-}))
+export const generateTeamsArray = () =>
+  driversInRandomOrder
+    .reduce((acc, currentValue) => {
+      const { team, points } = currentValue;
+      const teamObject = acc.find((t) => t.team === team);
+      teamObject ? (teamObject.points += points) : acc.push({ team, points });
+      return acc;
+    }, [])
+    .sort((b, a) => {
+      if (a.points > b.points) {
+        return 1;
+      }
+      if (b.points > a.points) {
+        return -1;
+      }
+      return 0;
+    });
 
 
 
